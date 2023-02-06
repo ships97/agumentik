@@ -1,3 +1,28 @@
 #forbox{
-    
+    /* border: 1px solid greenyellow; */
+    margin-top: 70px;
+}
+#hde1{
+    /* border: 1px solid red; */
+    color: white;
+    font-size: 30px;
+    width: 300px;
+    margin-left: 200px;
+    font-weight: 500;
+}
+#txt22{
+    /* border: 1px solid violet; */
+    color: white;
+    width: 47%;
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 210px;
+    line-height: normal;
+    font-size: 10px;
+}
+#ige{
+    /* border: 1px solid aqua; */
+    height: 220px;
+    margin-top: 16.5px;
+    margin-left: 125px;
 }
