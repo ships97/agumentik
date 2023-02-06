@@ -1,16 +1,31 @@
-const express = require('express')
-const cors = require('cors')
-const dbConnect = require('./config/db')
+const express = require('express');
+const cors = require('cors');
+const dbConnect = require('./config/db');
 const {ContentRouter,UserRouter} = require('./routes/index.js');
-const app = express()
 require('dotenv').config();
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
-app.use(cors())
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+app.use(express.urlencoded({extended: true}));
 app.use('/content',ContentRouter);
 app.use('/user',UserRouter);
-app.get('/', (req, res) => res.send('hello'))
+
+app.get('/', (req, res) => {
+    res.send('Hello from NFT Backend');
+});
 
 dbConnect().then(()=>{  
-    app.listen(8080, () => {console.log('server started on port 8080')})
+    app.listen(8080, async () => {
+        try{
+            await dbConnect();
+            console.log('connected to db successfully');
+        }
+        catch(err){
+            console.log("Error connecting to db");
+            console.log(err);
+        }
+        console.log('Listening at port 8080');
+    })
 })

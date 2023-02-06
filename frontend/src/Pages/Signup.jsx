@@ -11,47 +11,43 @@ import {
   Link,
   Button,
   Heading,
-  Text,
   useColorModeValue,
 } from '@chakra-ui/react';
 
 const Signup = () => {
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  const [first_name, setFName] = useState();
+  const [last_name, setLName] = useState();
+  const [contact, setContact] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   // const navigate = useNavigate();
-  // // console.log(name,email,password);
+  // console.log(fname,lname,contact,email,password);
 
-  // const handleSubmit = () => {
-  //    const payload = {
-  //       name,
-  //       email,
-  //       password
-  //    }
-  //     // console.log(payload);
-  //     fetch("http://localhost:8000/signup",{
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify(payload),
-  //     })
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       console.log(res);
-  //       alert(res.msg);
-  //       navigate("/login");
-  //     })
-  // }
+  const handleSubmit = () => {
+     const payload = {
+        first_name,
+        last_name,
+        contact,
+        email,
+        password
+     }
+      console.log(payload);
+      fetch("http://localhost:8080/user/signup",{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload),
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        alert("Signup successful");
+        // navigate("/login");
+      })
+  }
 
   return (
-    // <div>
-    //   <h1>Signup Page</h1>
-    //   <input type="text" placeholder='name' onChange={(e) => {setName(e.target.value)}} />
-    //   <input type="email" placeholder='email' onChange={(e) => {setEmail(e.target.value)}} />
-    //   <input type="password" placeholder='password' onChange={(e) => {setPassword(e.target.value)}} />
-    //   <button onClick={handleSubmit}>SignUp</button>
-    // </div>
     <Flex
       minH={'100vh'}
       align={'center'}
@@ -60,9 +56,6 @@ const Signup = () => {
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'}>Sign in to your account</Heading>
-          <Text fontSize={'lg'} color={'gray.600'}>
-            to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
-          </Text>
         </Stack>
         <Box
           rounded={'lg'}
@@ -70,13 +63,25 @@ const Signup = () => {
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
+            <FormControl id="fname">
+              <FormLabel>First Name</FormLabel>
+              <Input type="text" onChange={(e) => {setFName(e.target.value)}} />
+            </FormControl>
+            <FormControl id="lname">
+              <FormLabel>Last Name</FormLabel>
+              <Input type="text" onChange={(e) => {setLName(e.target.value)}} />
+            </FormControl>
+            <FormControl id="contact">
+              <FormLabel>Contact number</FormLabel>
+              <Input type="number" onChange={(e) => {setContact(e.target.value)}} />
+            </FormControl>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input type="email" onChange={(e) => {setEmail(e.target.value)}} />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input type="password" />
+              <Input type="password" onChange={(e) => {setPassword(e.target.value)}} />
             </FormControl>
             <Stack spacing={10}>
               <Stack
@@ -91,7 +96,8 @@ const Signup = () => {
                 color={'white'}
                 _hover={{
                   bg: 'blue.500',
-                }}>
+                }} 
+                onClick={handleSubmit}>
                 Sign in
               </Button>
             </Stack>

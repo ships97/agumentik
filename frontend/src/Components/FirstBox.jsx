@@ -1,7 +1,6 @@
 import { Box, Button, Heading, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 import "../Styles/FirstBox.css";
-import img1 from "../Images/img1.png";
 
 const FirstBox = ({image1,heading1,description1}) => {
   return (
