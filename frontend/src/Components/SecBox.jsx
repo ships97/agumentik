@@ -1,6 +1,7 @@
 import { Box, Heading, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 import "../Styles/SecBox.css";
+// import img2 from "../Images/img2.png";
 import img3 from "../Images/img3.png";
 import img4 from "../Images/img4.png";
 import img5 from "../Images/img5.png";
