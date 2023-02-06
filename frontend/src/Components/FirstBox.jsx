@@ -1,6 +1,6 @@
 import { Box, Button, Heading, Image, Text } from '@chakra-ui/react';
 import React from 'react';
-// import img1 from "../Images/img1.png";
+import img1 from "../Images/img1.png";
 import "../Styles/FirstBox.css";
 
 const FirstBox = ({image1,heading1,description1}) => {
@@ -18,7 +18,7 @@ const FirstBox = ({image1,heading1,description1}) => {
         </Box>
        </Box>
        <Box id='fir2'>
-            <Image src={image1} />
+            <Image src={img1} />
        </Box>
     </Box>
   )

@@ -1,7 +1,7 @@
 import { Box, Heading, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 import "../Styles/SecBox.css";
-// import img2 from "../Images/img2.png";
+import img2 from "../Images/img2.png";
 import img3 from "../Images/img3.png";
 import img4 from "../Images/img4.png";
 import img5 from "../Images/img5.png";
@@ -14,7 +14,7 @@ const SecBox = ({image2,heading2,description2}) => {
       <Text id='text1'>{description2}</Text>
       <Box id='innbox'>
         <Box id='imgbox'>
-            <Image src={image2} />
+            <Image src={img2} />
         </Box>
         <Box id='textbox'>
             <Box id='innn'>
