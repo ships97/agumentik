@@ -1,4 +1,4 @@
-const accessFile = require('../access.json');
+const accessFile = require('../role.json');
 const jwt = require('jsonwebtoken'); 
 require('dotenv').config(); 
 const mainKey = process.env.MAINKEY;
