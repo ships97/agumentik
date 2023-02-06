@@ -3,12 +3,12 @@ import React from 'react';
 import "../Styles/FirstBox.css";
 import img1 from "../Images/img1.png";
 
-const FirstBox = () => {
+const FirstBox = ({image1,heading1,description1}) => {
   return (
     <Box id='fir'>
        <Box id='fir1'>
-        <Heading id='headd'>Discover the latest NFTs ecosystem.</Heading>
-        <Text id='text'>A world where creators can use the ethereum blockchain to value their online expression in entirely new ways.</Text>
+        <Heading id='headd'>{heading1}</Heading>
+        <Text id='text'>{description1}</Text>
         <Box id='innerbox'>
             <Button id='buttn1'>Explore</Button>
             <Box id='inner1'>
@@ -18,7 +18,7 @@ const FirstBox = () => {
         </Box>
        </Box>
        <Box id='fir2'>
-            <Image src={img1} />
+            <Image src={image1} />
        </Box>
     </Box>
   )

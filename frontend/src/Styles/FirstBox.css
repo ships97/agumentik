@@ -28,6 +28,9 @@
 #buttn1{
     width: 50%;
     background-color: #4c7ff7;
+    color: white;
+    font-size: 12px;
+    border-radius: 10px;
 }
 #innerbox{
     /* border: 1px solid green; */
