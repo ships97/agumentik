@@ -1,8 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const dbConnect = require('./src/config/db');
-const {ContentRouter,UserRouter} = require('./src/routes/index.js');
+const dbConnect = require('./config/db');
+const {ContentRouter,UserRouter} = require('./routes/index.js');
 require('dotenv').config();
+const port = process.env.PORT || 8080;
 
 const app = express();
 
@@ -17,9 +18,9 @@ app.get('/', (req, res) => {
 });
 
 dbConnect().then(()=>{  
-    app.listen(8080, async () => {
+    app.listen(port, () => {
         try{
-            await dbConnect();
+            dbConnect();
             console.log('connected to db successfully');
         }
         catch(err){
