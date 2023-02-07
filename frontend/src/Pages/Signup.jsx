@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   Flex,
   Box,
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   Stack,
-  Link,
   Button,
   Heading,
   useColorModeValue,
@@ -20,7 +18,7 @@ const Signup = () => {
   const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // console.log(fname,lname,contact,email,password);
 
   const handleSubmit = () => {
@@ -42,8 +40,8 @@ const Signup = () => {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        alert("Signup successful");
-        // navigate("/login");
+        alert("Signup successfull");
+        navigate("/login");
       })
   }
 
@@ -55,7 +53,7 @@ const Signup = () => {
       bg={useColorModeValue('gray.50', 'gray.800')}>
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+          <Heading fontSize={'4xl'}>Sign up to your account</Heading>
         </Stack>
         <Box
           rounded={'lg'}
@@ -63,7 +61,7 @@ const Signup = () => {
           boxShadow={'lg'}
           p={8}>
           <Stack spacing={4}>
-            <FormControl id="fname">
+            <FormControl id="fname" isRequired>
               <FormLabel>First Name</FormLabel>
               <Input type="text" onChange={(e) => {setFName(e.target.value)}} />
             </FormControl>
@@ -71,26 +69,19 @@ const Signup = () => {
               <FormLabel>Last Name</FormLabel>
               <Input type="text" onChange={(e) => {setLName(e.target.value)}} />
             </FormControl>
-            <FormControl id="contact">
+            <FormControl id="contact" isRequired>
               <FormLabel>Contact number</FormLabel>
               <Input type="number" onChange={(e) => {setContact(e.target.value)}} />
             </FormControl>
-            <FormControl id="email">
+            <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
               <Input type="email" onChange={(e) => {setEmail(e.target.value)}} />
             </FormControl>
-            <FormControl id="password">
+            <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <Input type="password" onChange={(e) => {setPassword(e.target.value)}} />
             </FormControl>
             <Stack spacing={10}>
-              <Stack
-                direction={{ base: 'column', sm: 'row' }}
-                align={'start'}
-                justify={'space-between'}>
-                <Checkbox>Remember me</Checkbox>
-                <Link color={'blue.400'}>Forgot password?</Link>
-              </Stack>
               <Button
                 bg={'blue.400'}
                 color={'white'}
@@ -98,7 +89,7 @@ const Signup = () => {
                   bg: 'blue.500',
                 }} 
                 onClick={handleSubmit}>
-                Sign in
+                Sign up
               </Button>
             </Stack>
           </Stack>

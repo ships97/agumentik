@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
+import {
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Stack,
+  Button,
+  Heading,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const navigate = useNavigate();
-  const [token, setToken] = useState("");
+  // const [token, setToken] = useState("");
   // console.log(email,password);
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
      const payload = {
@@ -15,7 +25,7 @@ const Login = () => {
         password
      }
       // console.log(payload);
-      fetch("http://localhost:8000/login",{
+      fetch("http://localhost:8080/user/login",{
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -26,22 +36,54 @@ const Login = () => {
       .then((res) => {
         // console.log(res);
         localStorage.setItem("token", res.token)
-        // console.log(res.token);
-        alert(res.msg);
-        setToken(res.token);
-        // navigate("/calculateBMI");
+        console.log(res.token);
+        alert("Login successfull");
+        // setToken(res.token);
+        navigate("/");
       })
   }
 
   return (
-    <div>
-      <h1>Login Page</h1>
-      <input type="email" placeholder='email' onChange={(e) => {setEmail(e.target.value)}} />
-      <input type="password" placeholder='password' onChange={(e) => {setPassword(e.target.value)}} />
-      <button onClick={handleSubmit}>Login</button>
-      <div style={{width:"100%", boxSizing:"content-box",overflowY:"scroll",marginTop:"20px",marginBottom:"20px"}}><h3>Token : {token}</h3></div>
-      <button><Link style={{textDecoration:"none"}} to={"/calculateBMI"}>Go To Calculate BMI</Link></button>
-    </div>
+    //   <div style={{width:"100%", boxSizing:"content-box",overflowY:"scroll",marginTop:"20px",marginBottom:"20px"}}><h3>Token : {token}</h3></div>
+
+    <Flex
+      minH={'100vh'}
+      align={'center'}
+      justify={'center'}
+      bg={useColorModeValue('gray.50', 'gray.800')}>
+      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+        <Stack align={'center'}>
+          <Heading fontSize={'4xl'}>Log in to your account</Heading>
+        </Stack>
+        <Box
+          rounded={'lg'}
+          bg={useColorModeValue('white', 'gray.700')}
+          boxShadow={'lg'}
+          p={8}>
+          <Stack spacing={4}>
+            <FormControl id="email">
+              <FormLabel>Email address</FormLabel>
+              <Input type="email" onChange={(e) => {setEmail(e.target.value)}} />
+            </FormControl>
+            <FormControl id="password">
+              <FormLabel>Password</FormLabel>
+              <Input type="password" onChange={(e) => {setPassword(e.target.value)}} />
+            </FormControl>
+            <Stack spacing={10}>
+              <Button
+                bg={'blue.400'}
+                color={'white'}
+                _hover={{
+                  bg: 'blue.500',
+                }} 
+                onClick={handleSubmit}>
+                Log in
+              </Button>
+            </Stack>
+          </Stack>
+        </Box>
+      </Stack>
+    </Flex>
   )
 }
 
