@@ -18,15 +18,5 @@ app.get('/', (req, res) => {
 });
 
 dbConnect().then(()=>{  
-    app.listen(port, () => {
-        try{
-            dbConnect();
-            console.log('connected to db successfully');
-        }
-        catch(err){
-            console.log("Error connecting to db");
-            console.log(err);
-        }
-        console.log('Listening at port 8080');
-    })
+    app.listen(port, () => {console.log('server started on port 8080')})
 })
