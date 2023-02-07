@@ -10,12 +10,14 @@ import {
   Heading,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [token, setToken] = useState("");
   // console.log(email,password);
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
      const payload = {
@@ -37,6 +39,7 @@ const Login = () => {
         console.log(res.token);
         alert("Login successfull");
         // setToken(res.token);
+        navigate("/");
       })
   }
 
