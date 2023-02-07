@@ -43,6 +43,9 @@ const Signup = () => {
         alert("Signup successfull");
         navigate("/login");
       })
+      .catch((err) => {
+        alert("User already exists");
+      })
   }
 
   return (
