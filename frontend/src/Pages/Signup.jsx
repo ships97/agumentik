@@ -30,7 +30,7 @@ const Signup = () => {
         password
      }
       console.log(payload);
-      fetch("http://localhost:8080/user/signup",{
+      fetch("https://backend-augmentic-ships.onrender.com/user/signup",{
         method: "POST",
         headers: {
           "Content-Type": "application/json"
